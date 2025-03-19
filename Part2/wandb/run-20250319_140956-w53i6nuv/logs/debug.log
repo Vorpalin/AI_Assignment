@@ -1,0 +1,14 @@
+2025-03-19 14:09:56,971 INFO    MainThread:4132 [wandb_init.py:setup_run_log_directory():647] Logging user logs to c:\users\alexi\onedrive\documents\documents\école\centria\ai\third_module\wandb\run-20250319_140956-w53i6nuv\logs\debug.log
+2025-03-19 14:09:56,972 INFO    MainThread:4132 [wandb_init.py:setup_run_log_directory():648] Logging internal logs to c:\users\alexi\onedrive\documents\documents\école\centria\ai\third_module\wandb\run-20250319_140956-w53i6nuv\logs\debug-internal.log
+2025-03-19 14:09:56,972 INFO    MainThread:4132 [wandb_init.py:init():761] calling init triggers
+2025-03-19 14:09:56,973 INFO    MainThread:4132 [wandb_init.py:init():766] wandb.init called with sweep_config: {}
+config: {'_wandb': {}}
+2025-03-19 14:09:56,975 INFO    MainThread:4132 [wandb_init.py:init():776] wandb.init() called while a run is active
+2025-03-19 14:09:57,141 INFO    MainThread:4132 [wandb_watch.py:_watch():71] Watching
+2025-03-19 15:49:51,542 INFO    MainThread:4132 [wandb_run.py:_finish():2112] finishing run alexis-mialon-epita/mnist-cnn/kdc9ps27
+2025-03-19 15:49:51,543 INFO    MainThread:4132 [wandb_run.py:_atexit_cleanup():2340] got exitcode: 0
+2025-03-19 15:49:51,544 INFO    MainThread:4132 [wandb_run.py:_restore():2322] restore
+2025-03-19 15:49:51,544 INFO    MainThread:4132 [wandb_run.py:_restore():2328] restore done
+2025-03-19 15:49:52,694 INFO    MainThread:4132 [wandb_run.py:_footer_history_summary_info():3956] rendering history
+2025-03-19 15:49:52,694 INFO    MainThread:4132 [wandb_run.py:_footer_history_summary_info():3988] rendering summary
+2025-03-19 15:49:52,694 INFO    MainThread:4132 [wandb_run.py:_footer_sync_info():3917] logging synced files

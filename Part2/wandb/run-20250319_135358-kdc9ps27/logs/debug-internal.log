@@ -1,0 +1,16 @@
+{"time":"2025-03-19T13:53:59.0357396+01:00","level":"INFO","msg":"stream: starting","core version":"0.19.8","symlink path":"c:\\users\\alexi\\onedrive\\documents\\documents\\école\\centria\\ai\\third_module\\wandb\\run-20250319_135358-kdc9ps27\\logs\\debug-core.log"}
+{"time":"2025-03-19T13:54:01.6178309+01:00","level":"INFO","msg":"created new stream","id":"kdc9ps27"}
+{"time":"2025-03-19T13:54:01.6183931+01:00","level":"INFO","msg":"stream: started","id":"kdc9ps27"}
+{"time":"2025-03-19T13:54:01.6183931+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"kdc9ps27"}
+{"time":"2025-03-19T13:54:01.6183931+01:00","level":"INFO","msg":"sender: started","stream_id":"kdc9ps27"}
+{"time":"2025-03-19T13:54:01.6183931+01:00","level":"INFO","msg":"handler: started","stream_id":"kdc9ps27"}
+{"time":"2025-03-19T13:54:02.1233368+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-03-19T15:49:51.5466273+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-03-19T15:49:51.5488695+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-03-19T15:49:52.3732671+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-03-19T15:49:52.5725841+01:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading history steps 10-10, summary, console lines 155-168","runtime_seconds":0.1968955}],"total_operations":1}}
+{"time":"2025-03-19T15:49:52.7040513+01:00","level":"INFO","msg":"stream: closing","id":"kdc9ps27"}
+{"time":"2025-03-19T15:49:52.7040513+01:00","level":"INFO","msg":"handler: closed","stream_id":"kdc9ps27"}
+{"time":"2025-03-19T15:49:52.7040513+01:00","level":"INFO","msg":"sender: closed","stream_id":"kdc9ps27"}
+{"time":"2025-03-19T15:49:52.7040513+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"kdc9ps27"}
+{"time":"2025-03-19T15:49:52.7040513+01:00","level":"INFO","msg":"stream: closed","id":"kdc9ps27"}
