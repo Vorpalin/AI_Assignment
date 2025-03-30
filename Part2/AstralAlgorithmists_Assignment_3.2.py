@@ -15,6 +15,8 @@ import torchvision
 import torchvision.transforms as transforms
 import numpy as np
 import pandas as pd
+import matplotlib
+matplotlib.use('TkAgg')  # Switch to TkAgg backend
 import matplotlib.pyplot as plt
 import wandb  # Import W&B
 
@@ -130,14 +132,17 @@ if __name__ == '__main__':
     
     # login to wandb
     k = input("What is your wandb key: ")
-    wandb.login(key=k)
-    wandb.init(project="mnist-cnn", name="experiment_1")
+    try:
+        wandb.login(key=k)
+        wandb.init(project="mnist-cnn", name="experiment_1")
+    except:
+        pass
     # optimization
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     
     # transformer for preprocessing and data augmentation
     transform_augmentation = transforms.Compose([
-        #transforms.Grayscale(num_output_channels=3),  # Convert 1-channel to 3-channel
+        #transforms.Grayscale(num_output_channels=3),  
         transforms.RandomRotation(20),
         transforms.Resize((28, 28)),
         transforms.RandomResizedCrop(28),
@@ -147,14 +152,14 @@ if __name__ == '__main__':
     ])
 
     transform_classic = transforms.Compose([
-       # transforms.Grayscale(num_output_channels=3),  # Convert 1-channel to 3-channel
-        transforms.Resize((28, 28)),  # Ensure size matches training
+       # transforms.Grayscale(num_output_channels=3), 
+        transforms.Resize((28, 28)),  
         transforms.ToTensor(),
         transforms.Normalize((0.5,), (0.5,))
     ])
     
     transform_test = transforms.Compose([
-       # transforms.Grayscale(num_output_channels=3),  # Convert 1-channel to 3-channel
+       # transforms.Grayscale(num_output_channels=3),  
         transforms.RandomRotation(15),
         transforms.Resize((28, 28)),
         transforms.ToTensor(),
@@ -172,7 +177,6 @@ if __name__ == '__main__':
    
     # put the CNN to the cpu
     cnn = CNN().to(device)
-
     # optimisation
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.SGD(cnn.parameters(), lr=0.001, momentum=0.9)
@@ -181,7 +185,10 @@ if __name__ == '__main__':
     start_epoch = 1
     
     #
-    wandb.watch(model, log="all")
+    try:
+        wandb.watch(model, log="all")
+    except:
+        pass
     # ask the number of epochs
     try:
         nb_epoch = int(input("How many epoch do you want to execute: "))
@@ -257,18 +264,21 @@ if __name__ == '__main__':
         print(f'Accuracy: {correct*100/total:.1f}%')
         print(f'Loss: {running_loss/len(test_loader)}')
         test_epoch.append(running_loss/len(test_loader))
-        wandb.log({
+        try:
+            wandb.log({
         "epoch": epoch ,
         "train_loss": c/len(train_loader),
         "train_accuracy": correct/total,
         "test_loss": all_epoch[-1],
         "test_accuracy": test_epoch[-1]
-    })
+            })
+        except:
+            pass
         scheduler.step()
         # early stopping
         if running_loss /len(test_loader) < best_val_loss:
             best_val_loss = running_loss /len(test_loader)
-            torch.save(cnn.model.state_dict(), "best_model.pth""model.pth")  # Save model
+            torch.save(cnn.state_dict(), "model.pth")  # Save model
             print("Best model saved")
         else:
             epochs_without_improvement += 1
@@ -284,6 +294,8 @@ if __name__ == '__main__':
     plt.ylabel("Loss")
     plt.legend()
     plt.show()
-    
-    wandb.finish()
+    try:
+        wandb.finish()
+    except:
+        pass
     
