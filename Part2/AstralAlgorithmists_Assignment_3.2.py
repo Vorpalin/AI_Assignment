@@ -75,6 +75,7 @@ def load(filename: str, separator: str=",") -> pd.DataFrame:
 
 #%% [3] Part 2
 
+# Customise dataset
 class CSVDataset(torch.utils.data.Dataset):
     def __init__(self, csv, transform=None):
         self.data = load(csv)
@@ -97,7 +98,8 @@ class CSVDataset(torch.utils.data.Dataset):
             image = self.transform(image)
 
         return image, label
-    
+
+# first model
 class CNN(nn.Module):
     def __init__(self):
         super().__init__()
@@ -170,15 +172,17 @@ if __name__ == '__main__':
     train_dataset = torchvision.datasets.MNIST(root='./data', train=True, download=True, transform=transform_classic)
     train_dataset_2 = torchvision.datasets.MNIST(root='./data', train=True, download=True, transform=transform_augmentation)
     test_data = torchvision.datasets.MNIST(root='./data', train=False, download=True, transform=transform_test)
-    
+
+    # prepate data
     train_data = torch.utils.data.ConcatDataset([train_dataset, train_dataset_2])
     train_loader = torch.utils.data.DataLoader(train_data, batch_size=64, shuffle=True)  # shuffle=True
     test_loader = torch.utils.data.DataLoader(test_data, batch_size=1, shuffle=False)  # no shuffle for testing
    
     # put the CNN to the cpu
     cnn = CNN().to(device)
-    # optimisation
+    # loss function
     criterion = nn.CrossEntropyLoss()
+    #optimizer
     optimizer = optim.SGD(cnn.parameters(), lr=0.001, momentum=0.9)
     scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=10, gamma=0.1)
     training = ""
@@ -263,6 +267,7 @@ if __name__ == '__main__':
             
         print(f'Accuracy: {correct*100/total:.1f}%')
         print(f'Loss: {running_loss/len(test_loader)}')
+        # store data
         test_epoch.append(running_loss/len(test_loader))
         try:
             wandb.log({
